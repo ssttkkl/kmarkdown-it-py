@@ -1,0 +1,22 @@
+[project]
+name = "kmarkdown-it-py"
+version = "0.1.1-alpha1"
+description = "Kmarkdown It for Python"
+authors = [
+    {email = "huang.wen.long@hotmail.com", name = "ssttkkl"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "markdown-it-py == 2.1.0",
+]
+
+[build-system]
+requires = ["setuptools~=61.0"]
+build-backend = "setuptools.build_meta"

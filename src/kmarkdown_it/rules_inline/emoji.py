@@ -3,7 +3,7 @@ import json
 
 from markdown_it.rules_inline import StateInline
 
-from src.kmarkdown_it.helper import *
+from ..helper import *
 from .. import assets
 
 with pkg_resources.open_text(assets, "emoji.json") as f:

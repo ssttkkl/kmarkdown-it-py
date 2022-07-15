@@ -1,6 +1,6 @@
 from markdown_it.rules_inline import StateInline
 
-from src.kmarkdown_it.helper import *
+from ..helper import *
 
 label = "emj"
 label_len = get_max_label_length(label)

@@ -3,10 +3,10 @@ from typing import Mapping, Callable
 from markdown_it import MarkdownIt
 from markdown_it.renderer import RendererProtocol, RendererHTML
 
-from src.kmarkdown_it.rules_inline.emoji import emoji
-from src.kmarkdown_it.rules_inline.kmarkdown_label import kmarkdown_label
-from src.kmarkdown_it.rules_inline.server_emoji import server_emoji
-from src.kmarkdown_it.rules_inline.text import text
+from .rules_inline.emoji import emoji
+from .rules_inline.kmarkdown_label import kmarkdown_label
+from .rules_inline.server_emoji import server_emoji
+from .rules_inline.text import text
 
 
 def KMarkdownIt(config: str | Mapping = "commonmark",

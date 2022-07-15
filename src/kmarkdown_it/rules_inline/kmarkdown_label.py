@@ -1,6 +1,6 @@
 from markdown_it.rules_inline import StateInline
 
-from src.kmarkdown_it.helper import *
+from ..helper import *
 
 support_labels = {"ins", "spl", "chn", "met", "rol"}
 max_support_labels_len = get_max_label_length(support_labels)

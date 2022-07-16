@@ -1,6 +1,6 @@
 from markdown_it.rules_inline import StateInline
 
-from ..helper import *
+from kmarkdown_it.rules_inline.helper import *
 
 support_labels = {"ins", "spl", "chn", "met", "rol"}
 max_support_labels_len = get_max_label_length(support_labels)
@@ -29,25 +29,26 @@ def kmarkdown_label(state: StateInline, silent: bool = False):
 
     if not silent:
         if label == "ins":
-            state.push("ins_begin", "u", 1)
+            state.push("ins_open", "u", 1)
 
             state.pos = pos_label_end
             state.posMax = pos_label2_begin
             state.md.inline.tokenize(state)
 
-            state.push("ins_end", "u", -1)
+            state.push("ins_close", "u", -1)
         elif label == "spl":
-            state.push("spl_begin", "mask", 1)
+            state.push("spl_open", "mask", 1)
 
             state.pos = pos_label_end
             state.posMax = pos_label2_begin
             state.md.inline.tokenize(state)
 
-            state.push("spl_end", "mask", -1)
+            state.push("spl_close", "mask", -1)
         else:
             content = state.src[pos_label_end:pos_label2_begin]
             token = state.push(label, label, 0)
             token.attrSet("content", content)
 
     state.pos = pos_label2_end
+    state.posMax = pos_max
     return True

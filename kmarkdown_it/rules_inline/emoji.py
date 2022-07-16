@@ -3,7 +3,7 @@ import json
 
 from markdown_it.rules_inline import StateInline
 
-from ..helper import *
+from kmarkdown_it.rules_inline.helper import *
 from .. import assets
 
 with pkg_resources.open_text(assets, "emoji.json") as f:
@@ -39,4 +39,5 @@ def emoji(state: StateInline, silent: bool = False):
         state.pending += emoji_mapping[label]
 
     state.pos = pos_label_end
+    state.posMax = pos_max
     return True

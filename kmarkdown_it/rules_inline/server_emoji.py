@@ -1,6 +1,6 @@
 from markdown_it.rules_inline import StateInline
 
-from ..helper import *
+from kmarkdown_it.rules_inline.helper import *
 
 label = "emj"
 label_len = get_max_label_length(label)
@@ -45,4 +45,5 @@ def server_emoji(state: StateInline, silent: bool = False):
         token.attrSet("emoji_id", emoji_id)
 
     state.pos = pos_label2_end
+    state.posMax = pos_max
     return True

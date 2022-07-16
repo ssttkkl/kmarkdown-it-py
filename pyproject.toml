@@ -1,8 +1,11 @@
 [tool.poetry]
-name = "kmarkdown-it"
+name = "kmarkdown-it-py"
 version = "0.1.1-alpha01"
 description = ""
 authors = ["ssttkkl <huang.wen.long@hotmail.com>"]
+packages = [
+    { include = "kmarkdown_it" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"

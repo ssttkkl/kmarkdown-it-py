@@ -1,4 +1,4 @@
-from typing import Mapping, Callable
+from typing import Mapping, Callable, Union, Optional
 
 from markdown_it import MarkdownIt
 from markdown_it.renderer import RendererProtocol, RendererHTML
@@ -9,8 +9,8 @@ from .rules_inline.server_emoji import server_emoji
 from .rules_inline.text import text
 
 
-def KMarkdownIt(config: str | Mapping = "commonmark",
-                options_update: Mapping | None = None,
+def KMarkdownIt(config: Union[str, Mapping] = "commonmark",
+                options_update: Optional[Mapping] = None,
                 *,
                 renderer_cls: Callable[[MarkdownIt], RendererProtocol] = RendererHTML, ) -> MarkdownIt:
     md = MarkdownIt(config, options_update, renderer_cls=renderer_cls)

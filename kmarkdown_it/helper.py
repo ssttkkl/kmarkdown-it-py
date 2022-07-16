@@ -1,9 +1,11 @@
+from typing import Union
+
 from markdown_it.rules_inline import StateInline
 
 __all__ = ("check_label", "get_max_label_length", "get_label", "meet_label")
 
 
-def check_label(state: StateInline, label_start: int, label_end: int, label_name: str | set | None = None):
+def check_label(state: StateInline, label_start: int, label_end: int, label_name: Union[str, set, None] = None):
     label = state.src[label_start + 1:label_end - 1]
     if (isinstance(label_name, str) and label != label_name) \
             or (isinstance(label_name, set) and label not in label_name):
@@ -12,7 +14,7 @@ def check_label(state: StateInline, label_start: int, label_end: int, label_name
         return True
 
 
-def get_max_label_length(label_name: str | set | None = None):
+def get_max_label_length(label_name: Union[str, set, None] = None):
     if isinstance(label_name, str):
         return len(label_name) + 2
     elif isinstance(label_name, set):
@@ -23,7 +25,7 @@ def get_max_label_length(label_name: str | set | None = None):
 
 def get_label(state: StateInline,
               pos: int, pos_max: int,
-              label_name: str | set | None = None,
+              label_name: Union[str, set, None] = None,
               start_marker: int = 0x28,  # /* ( */
               end_marker: int = 0x29):  # /* ) */
     """
@@ -59,7 +61,7 @@ def get_label(state: StateInline,
 
 def meet_label(state: StateInline,
                pos: int, pos_max: int,
-               label_name: str | set | None = None,
+               label_name: Union[str, set, None] = None,
                start_marker: int = 0x28,  # /* ( */
                end_marker: int = 0x29):  # /* ) */
     """

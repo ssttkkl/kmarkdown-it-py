@@ -47,7 +47,7 @@ def kmarkdown_label(state: StateInline, silent: bool = False):
         else:
             content = state.src[pos_label_end:pos_label2_begin]
             token = state.push(label, label, 0)
-            token.attrSet("content", content)
+            token.content = content
 
     state.pos = pos_label2_end
     state.posMax = pos_max

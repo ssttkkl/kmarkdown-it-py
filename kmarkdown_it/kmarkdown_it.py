@@ -44,29 +44,27 @@ class KMarkdownIt(MarkdownIt):
         tree = SyntaxTreeNode(tokens)
 
         buffer = StringIO()
-        self._extract_plain_text_root(tree, buffer)
-        return buffer.getvalue().strip()
+        for i, b in enumerate(tree.children):
+            KMarkdownIt._extract_plain_text_block(b, buffer, i > 0)
+        return buffer.getvalue()
 
     @staticmethod
-    def _extract_plain_text_root(node: SyntaxTreeNode, buffer: StringIO):
-        for b in node.children:
-            KMarkdownIt._extract_plain_text_block(b, buffer)
+    def _extract_plain_text_block(node: SyntaxTreeNode, buffer: StringIO, linebreak_before: bool):
+        if node.type == "hr":
+            return
 
-    @staticmethod
-    def _extract_plain_text_block(node: SyntaxTreeNode, buffer: StringIO):
+        if linebreak_before:
+            buffer.write('\n')
+
         if node.type == "code_block" or node.type == "fence":
             buffer.write(node.content)
-            buffer.write('\n')
         else:
-            for b in node.children:
+            for i, b in enumerate(node.children):
                 if b.type == "inline":
                     KMarkdownIt._extract_plain_text_inline(b, buffer)
                     buffer.write('\n')
                 else:
-                    KMarkdownIt._extract_plain_text_block(b, buffer)
-
-            if node.type == "paragraph":
-                buffer.write('\n')
+                    KMarkdownIt._extract_plain_text_block(b, buffer, i > 0)
 
     @staticmethod
     def _extract_plain_text_inline(node: SyntaxTreeNode, buffer: StringIO):

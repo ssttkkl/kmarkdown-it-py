@@ -1,8 +1,10 @@
 [tool.poetry]
 name = "kmarkdown-it-py"
 version = "0.1.1-alpha01"
-description = ""
+description = "基于markdown-it-py开发的KMarkdown Parser"
 authors = ["ssttkkl <huang.wen.long@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
 packages = [
     { include = "kmarkdown_it" }
 ]
@@ -12,6 +14,7 @@ python = "^3.7"
 markdown-it-py = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
 
 
 [build-system]

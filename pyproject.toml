@@ -4,7 +4,9 @@ version = "0.1.1-alpha01"
 description = "基于markdown-it-py开发的KMarkdown Parser"
 authors = ["ssttkkl <huang.wen.long@hotmail.com>"]
 license = "MIT"
-readme = "README.md"
+readme = "README.MD"
+repository = "https://github.com/ssttkkl/kmarkdown-it-py"
+keywords = ["markdown-it-py", "kaiheila", "kook", "kmarkdown"]
 packages = [
     { include = "kmarkdown_it" }
 ]
